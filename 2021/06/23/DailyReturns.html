@@ -173,7 +173,7 @@ window.onload = wrap_img;
     <span class="c1">#print(daily_returns.head())</span>
     <span class="n">daily_returns</span><span class="p">[</span><span class="s1">&#39;Cumulative_return_SPY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">daily_returns</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">])</span>
     <span class="n">daily_returns</span><span class="p">[</span><span class="s1">&#39;Cumulative_return_XOM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">daily_returns</span><span class="p">[</span><span class="s1">&#39;XOM&#39;</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">daily_returns</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+    <span class="c1">#print(daily_returns.tail())</span>
     <span class="k">return</span> <span class="n">daily_returns</span>
 
 
@@ -209,19 +209,6 @@ window.onload = wrap_img;
 " />
 </div>
 
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>                 SPY       XOM  Cumulative_return_SPY  Cumulative_return_XOM
-2010-07-26  0.010416  0.011219               0.083765               0.065664
-2010-07-27 -0.000090  0.006955               0.083675               0.072618
-2010-07-28 -0.006455  0.001644               0.077220               0.074263
-2010-07-29 -0.004872 -0.009358               0.072348               0.064905
-2010-07-30 -0.000181 -0.010939               0.072167               0.053966
-</pre>
-</div>
 </div>
 
 <div class="output_area">
