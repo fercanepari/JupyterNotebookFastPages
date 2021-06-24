@@ -12,3 +12,9 @@ _notebooks/.ipynb_checkpoints
 .netlify
 .tweet-cache
 __pycache__
+.spyproject/*
+__pycache__/*
+Header/*
+Lib/*
+Scripts/*
+share/*
