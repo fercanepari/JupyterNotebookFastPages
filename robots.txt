@@ -1,1 +1,1 @@
-Sitemap: http://fercanepari.com.ar/sitemap.xml
+Sitemap: https://fercanepari.github.io/JupyterNotebookFastPages/sitemap.xml
