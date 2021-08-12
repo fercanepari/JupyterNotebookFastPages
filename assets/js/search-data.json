@@ -4,8 +4,8 @@
         "post0": {
             "title": "Algorithmic trading",
             "content": "import os import pandas as pd import numpy as np import matplotlib.pyplot as plt plt.style.use(&#39;fivethirtyeight&#39;) . def symbol_to_path(symbol, base_dir=&quot;data&quot;): &quot;&quot;&quot;Return CSV file path given ticker symbol.&quot;&quot;&quot; return os.path.join(base_dir, &quot;{}.csv&quot;.format(str(symbol))) . df = pd.read_csv(symbol_to_path(&quot;TSLA&quot;), index_col=&#39;Date&#39;, parse_dates=True, na_values=[&#39;nan&#39;]) ##, usecols=[&#39;Date&#39;, &#39;Adj Close&#39;] #Show data #df plt.figure(figsize=(12.2, 4.5)) plt.title(&#39;Close price&#39;, fontsize = 22) plt.plot(df[&#39;Close&#39;]) plt.xlabel(&#39;Date&#39;, fontsize = 18) plt.ylabel(&#39;Close price&#39;, fontsize = 18) plt.show() .",
-            "url": "https://fercanepari.github.io/JupyterNotebookFastPages/fastpages/jupyter/algorithmictrading/phython/movingaverages/2021/08/12/Algorithmic-Trading-Strategy-Using-Three-Moving-Averages.html",
-            "relUrl": "/fastpages/jupyter/algorithmictrading/phython/movingaverages/2021/08/12/Algorithmic-Trading-Strategy-Using-Three-Moving-Averages.html",
+            "url": "https://fercanepari.github.io/JupyterNotebookFastPages/fastpages/jupyter/algorithmictrading/python/movingaverages/2021/08/12/Algorithmic-Trading-Strategy-Using-Three-Moving-Averages.html",
+            "relUrl": "/fastpages/jupyter/algorithmictrading/python/movingaverages/2021/08/12/Algorithmic-Trading-Strategy-Using-Three-Moving-Averages.html",
             "date": " • Aug 12, 2021"
         }
         
