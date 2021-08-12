@@ -1,0 +1,14 @@
+Tareas python bot trading.
+
+1 - Completar curso sobre ML aplicado a finanzas
+2 - Analizar estrategias y análisis financieros y estadísticos sobre diferentes 'stocks' 
+3 - Crear notebook para obtener datos dinamicamente de stocks.
+4 - Pensar estrategias a aplicar antes de iniciar trade
+5 - Crear notebook de plots y análisis aplicados a diferentes stocks
+6 - Investigar APIs de markets para trading
+7 - Notebook de plot de grafico de velas
+8 - 
+9 - 
+10 - 
+11 - 
+
