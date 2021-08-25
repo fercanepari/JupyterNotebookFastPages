@@ -5,15 +5,18 @@ Created on Wed Aug 25 01:27:23 2021
 @author: CanepariF
 """
 
-import streamlit as st
+import yfinance as yf
+import pandas as pd
+import datetime
 
-st.title("Finance dashboard")
+tickers = ('XCH')
+#tickers = ('BTC')
 
-st.write("""
-         # Test Título
-         
-         Test Mensaje
-         
-         """)
+dateTo = datetime.datetime.today()
+dateFrom = dateTo + datetime.timedelta(days=-10)
+
+df = yf.download(tickers, dateFrom, dateTo)
+
+print(df)
          
          
