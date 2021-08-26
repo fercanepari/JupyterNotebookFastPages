@@ -111,7 +111,7 @@ if result:
         
         #Date range to check if there is a signal to buy the asset
         dateTo = datetime.datetime.today()
-        dateFrom = dateTo + datetime.timedelta(days=-60)
+        dateFrom = dateTo + datetime.timedelta(days=-10)
         
         dfBuy = frame.loc[dateFrom:dateTo, ['Buy']]
         toBuy = dfBuy[dfBuy['Buy']=='Yes']
