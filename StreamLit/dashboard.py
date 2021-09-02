@@ -11,23 +11,6 @@ import pandas as pd
 #import datetime
 import matplotlib.pyplot as plt
 
-st.title("Finance dashboard")
-
-tickers = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]
-tickers = tickers.Symbol.to_list()
-
-tickers = [i.replace('.','-') for i in tickers]
-#tickers = ('TSLA','AAPL','MSFT','BTC-USD','ETH-USD')
-
-#dropdown = tickers 
-dropdown = st.multiselect('Pick your assets', tickers)
-
-
-start = st.date_input('Start', value=pd.to_datetime('2021-01-01'))
-end = st.date_input('End', value=pd.to_datetime('today'))
-#start = datetime.date(2021, 1, 1)
-#end = datetime.date.today()
-
 def relativeRet(df):
     rel = df.pct_change()
     cumret = (1+rel).cumprod()-1
@@ -58,76 +41,114 @@ def get_bollinger_bands(rm, rstd):
     lower_band = rm - (rstd * 2)
     return upper_band, lower_band
 
-if len(dropdown) > 0:
-    df = relativeRet(yf.download(dropdown, start, end)['Adj Close'])
-    st.header('Returns of {}'.format(dropdown))
-    st.line_chart(df)
-    
-    #df
-    
-    dfAll = get_data(dropdown, start, end)   
-    #dfAll
-    st.header('Bollinger bands')
-    
-    for ticker in dropdown:
+st.title("Finance dashboard")
 
-        if len(dropdown) == 1:
-            # Compute Bollinger Bands
-            # 1. Compute rolling mean
-            rm_Ticker = get_rolling_mean(dfAll, window=20)
-            
-            # 2. Compute rolling standard deviation
-            rstd_Ticker = get_rolling_std(dfAll, window=20)
-        
-            # 3. Compute upper and lower bands
-            upper_band, lower_band = get_bollinger_bands(rm_Ticker, rstd_Ticker)
-            
-            # Plot raw ticker values, rolling mean and Bollinger Bands
-            ax = dfAll.plot(title="Bollinger Bands", label=ticker)
-            rm_Ticker.plot(label='Rolling mean', ax=ax)
-            upper_band.plot(label='upper band', ax=ax)
-            lower_band.plot(label='lower band', ax=ax)
-            
-            # Add axis labels and legend
-            ax.set_xlabel("Date")
-            ax.set_ylabel("Price")
-            ax.legend(loc='upper left')
-            
+dropdownType = st.multiselect('Pick your market:', ['Crypto', 'SP500'])
+
+if len(dropdownType) > 0:
+
+    tickers = []
+    if 'Crypto' in dropdownType:
+        print('tiene crypto')
+        tickersCrypt = pd.read_html('https://en.wikipedia.org/wiki/List_of_cryptocurrencies')[0]
+        tickersCrypt = tickersCrypt.Symbol.to_list()
+        tickersCryptAux = []
+        for i in tickersCrypt:
+            strRet = i.split(",", 1)
+            tickersCryptAux.append(strRet[0])
+            tickers.append(strRet[0])
     
-            plt.plot(dfAll)
-            plt.title(label=ticker)
+    if 'SP500' in dropdownType:
+        tickersSP500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]
+        tickersSP500 = tickersSP500.Symbol.to_list()
+        #The following one has no enough data
+        #tickers.remove('OGN')
+        tickersSP500 = [i.replace('.','-') for i in tickersSP500]
+        
+        for i in tickersSP500:
+            tickers.append(i)
+    
+    
+    dropdown = st.multiselect('Pick your assets', tickers)
+    
+    
+    start = st.date_input('Start', value=pd.to_datetime('2021-01-01'))
+    end = st.date_input('End', value=pd.to_datetime('today'))
+    #start = datetime.date(2021, 1, 1)
+    #end = datetime.date.today()
+
+
+
+    if len(dropdown) > 0:
+        df = relativeRet(yf.download(dropdown, start, end)['Adj Close'])
+        st.header('Returns of {}'.format(dropdown))
+        st.line_chart(df)
+        
+        #df
+        
+        dfAll = get_data(dropdown, start, end)   
+        #dfAll
+        st.header('Bollinger bands')
+        
+        for ticker in dropdown:
+    
+            if len(dropdown) == 1:
+                # Compute Bollinger Bands
+                # 1. Compute rolling mean
+                rm_Ticker = get_rolling_mean(dfAll, window=20)
+                
+                # 2. Compute rolling standard deviation
+                rstd_Ticker = get_rolling_std(dfAll, window=20)
             
-        else:
-            # Compute Bollinger Bands
-            # 1. Compute rolling mean
-            rm_Ticker = get_rolling_mean(dfAll[ticker], window=20)
+                # 3. Compute upper and lower bands
+                upper_band, lower_band = get_bollinger_bands(rm_Ticker, rstd_Ticker)
+                
+                # Plot raw ticker values, rolling mean and Bollinger Bands
+                ax = dfAll.plot(title="Bollinger Bands", label=ticker)
+                rm_Ticker.plot(label='Rolling mean', ax=ax)
+                upper_band.plot(label='upper band', ax=ax)
+                lower_band.plot(label='lower band', ax=ax)
+                
+                # Add axis labels and legend
+                ax.set_xlabel("Date")
+                ax.set_ylabel("Price")
+                ax.legend(loc='upper left')
+                
         
-            # 2. Compute rolling standard deviation
-            rstd_Ticker = get_rolling_std(dfAll[ticker], window=20)
-        
-            # 3. Compute upper and lower bands
-            upper_band, lower_band = get_bollinger_bands(rm_Ticker, rstd_Ticker)
-    
-            # Plot raw ticker values, rolling mean and Bollinger Bands
-            ax = dfAll[ticker].plot(title="Bollinger Bands", label=ticker)
-            rm_Ticker.plot(label='Rolling mean', ax=ax)
-            upper_band.plot(label='upper band', ax=ax)
-            lower_band.plot(label='lower band', ax=ax)
-        
-            # Add axis labels and legend
-            ax.set_xlabel("Date")
-            ax.set_ylabel("Price")
-            ax.legend(loc='upper left')
-            #plt.show()
-    
-            print(dfAll[ticker])
-    
-            plt.plot(dfAll[ticker])
-            plt.title(label=ticker)
-        
+                plt.plot(dfAll)
+                plt.title(label=ticker)
+                
+            else:
+                # Compute Bollinger Bands
+                # 1. Compute rolling mean
+                rm_Ticker = get_rolling_mean(dfAll[ticker], window=20)
             
-        st.pyplot(plt)
-        plt.close()
+                # 2. Compute rolling standard deviation
+                rstd_Ticker = get_rolling_std(dfAll[ticker], window=20)
+            
+                # 3. Compute upper and lower bands
+                upper_band, lower_band = get_bollinger_bands(rm_Ticker, rstd_Ticker)
+        
+                # Plot raw ticker values, rolling mean and Bollinger Bands
+                ax = dfAll[ticker].plot(title="Bollinger Bands", label=ticker)
+                rm_Ticker.plot(label='Rolling mean', ax=ax)
+                upper_band.plot(label='upper band', ax=ax)
+                lower_band.plot(label='lower band', ax=ax)
+            
+                # Add axis labels and legend
+                ax.set_xlabel("Date")
+                ax.set_ylabel("Price")
+                ax.legend(loc='upper left')
+                #plt.show()
+        
+                print(dfAll[ticker])
+        
+                plt.plot(dfAll[ticker])
+                plt.title(label=ticker)
+            
+                
+            st.pyplot(plt)
+            plt.close()
 
 
     
