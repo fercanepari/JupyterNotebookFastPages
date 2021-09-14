@@ -9,7 +9,6 @@ import streamlit as st
 import pandas as pd 
 import matplotlib.pyplot as plt
 import yfinance as yf 
-#import datetime
 
 
 def RSIcalc(asset):
@@ -72,26 +71,10 @@ if len(ticker) > 0:
     dfBuy = frame.loc['2011-01-01':'2021-08-24', ['Buy']]
     toBuy = dfBuy[dfBuy['Buy']=='Yes']
 
-    if not toBuy.empty:
-        print('Asset to buy: ')
-        
-        plt.figure(figsize=(12,5))
-        plt.scatter(frame.loc[buy].index, frame.loc[buy]['Adj Close'], marker='^', c='g')
-        plt.plot(frame['Adj Close'], alpha=0.7)
-        plt.title(label=ticker)    
-        
-        st.pyplot(plt)
-        plt.close()
-    frame = RSIcalc(ticker)
-    buy, sell = getSignals(frame)
-
-    dfBuy = frame.loc['2018-01-01':'2021-08-24', ['Buy']]
-    toBuy = dfBuy[dfBuy['Buy']=='Yes']
-
+    
     if not toBuy.empty:
         print('Asset to buy: ')
           
-        plt.close()
         
         plt.figure(figsize=(12,8))
         #plt.set_facecolor('black')
