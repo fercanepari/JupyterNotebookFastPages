@@ -13,7 +13,7 @@ import yfinance as yf
 
 
 def RSIcalc(asset):
-    df = yf.download(asset, start='2011-01-01')
+    df = yf.download(asset, start='2018-01-01')
     
     df['MA200'] = df['Adj Close'].rolling(window=200).mean()
     df['price change'] = df['Adj Close'].pct_change()
@@ -82,4 +82,54 @@ if len(ticker) > 0:
         
         st.pyplot(plt)
         plt.close()
+    frame = RSIcalc(ticker)
+    buy, sell = getSignals(frame)
 
+    dfBuy = frame.loc['2018-01-01':'2021-08-24', ['Buy']]
+    toBuy = dfBuy[dfBuy['Buy']=='Yes']
+
+    if not toBuy.empty:
+        print('Asset to buy: ')
+          
+        plt.close()
+        
+        plt.figure(figsize=(12,8))
+        #plt.set_facecolor('black')
+        ax1 = plt.subplot(211)
+        ax1.plot(frame.index, frame['Adj Close'], color='lightgray', alpha=0.5)
+        ax1.set_title("Adjusted Close Price", color='white')
+        
+        ax1.grid(True, color='#555555')
+        ax1.set_axisbelow(True)
+        ax1.set_facecolor('black')
+        ax1.figure.set_facecolor('#121212')
+        ax1.tick_params(axis='x', colors='white')
+        ax1.tick_params(axis='y', colors='white')
+        ax1.scatter(frame.loc[buy].index, frame.loc[buy]['Adj Close'], marker='^', c='yellow')
+        #ax1.scatter(frame.loc[sell].index, frame.loc[sell]['Adj Close'], marker='v', c='red')
+        
+        
+        ax2 = plt.subplot(212, sharex=ax1)
+        ax2.plot(frame.index, frame['RSI'], color='lightgray')
+        ax2.axhline(0, linestyle='--', alpha = 0.5, color='#ff0000')
+        ax2.axhline(10, linestyle='--', alpha = 0.5, color='#ffaa00')
+        ax2.axhline(20, linestyle='--', alpha = 0.5, color='#00ff00')
+        ax2.axhline(30, linestyle='--', alpha = 0.5, color='#cccccc')
+        ax2.axhline(70, linestyle='--', alpha = 0.5, color='#cccccc')
+        ax2.axhline(80, linestyle='--', alpha = 0.5, color='#00ff00')
+        ax2.axhline(90, linestyle='--', alpha = 0.5, color='#ffaa00')
+        ax2.axhline(100, linestyle='--', alpha = 0.5, color='#ff0000')
+        
+        
+        ax2.set_title("RSI Value", color='white')
+        ax2.grid(False)
+        ax2.set_axisbelow(True)
+        ax2.set_facecolor('black')
+        ax2.figure.set_facecolor('black')
+        ax2.tick_params(axis='x', colors='white')
+        ax2.tick_params(axis='y', colors='white')
+        
+        plt.show()
+        
+        st.pyplot(plt)
+        plt.close()
