@@ -9,7 +9,7 @@ import streamlit as st
 import pandas as pd 
 import matplotlib.pyplot as plt
 import yfinance as yf 
-
+import datetime
 
 def RSIcalc(asset, start, end):
     df = yf.download(asset, start, end)
@@ -63,9 +63,13 @@ st.text("La lista de activos (SP500) la obtenemos de Wikipedia (https://en.wikip
 start = st.date_input('Start', value=pd.to_datetime('2011-01-01'))
 end = st.date_input('End', value=pd.to_datetime('today'))
 
+diffDays = end - start
+print(diffDays.days)
+
 ticker = st.selectbox('Seleccione el activo a procesar: ', tickers)
 print(ticker)
-if len(ticker) > 0:
+
+if len(ticker) > 0 and diffDays.days > 300:
     
     frame = RSIcalc(ticker, start, end)
     buy, sell = getSignals(frame)
@@ -121,3 +125,7 @@ if len(ticker) > 0:
 
         st.text("Señales de compra obtenidas: ")
         toBuy
+    else:
+        st.text("No se encpntraron señales de compra en el período.")
+else:
+    st.text("El rango de fechas debe ser superior a 300 dias.")
