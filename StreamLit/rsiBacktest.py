@@ -55,8 +55,8 @@ st.title("Estrategia RSI - Backtest de ordenes de compra.")
 
 st.text("Usando el Indice de fuerza relativo (RSI en inglés)  podemos buscar señales de ") 
 st.text("compra cuando el activo está sobrevendido")
-st.text("En el siguiente programa, se grafican todas las señales de compra que de ")
-st.text("hubiesen generado en el período especificado.")
+st.text("A continuación, se usa esta estrategia, y se grafican todas las señales de")
+st.text("compra sugeridas para el período de tiempo seleccionado.")
 
 st.text("La lista de activos (SP500) la obtenemos de Wikipedia (https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)")
 
