@@ -126,6 +126,6 @@ if len(ticker) > 0 and diffDays.days > 300:
         st.text("Señales de compra obtenidas: ")
         toBuy
     else:
-        st.text("No se encpntraron señales de compra en el período.")
+        st.text("No se encontraron señales de compra en el período.")
 else:
     st.text("El rango de fechas debe ser superior a 300 dias.")
