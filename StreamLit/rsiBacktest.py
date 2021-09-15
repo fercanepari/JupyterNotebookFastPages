@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 import yfinance as yf 
 
 
-def RSIcalc(asset):
-    df = yf.download(asset, start='2018-01-01')
+def RSIcalc(asset, start, end):
+    df = yf.download(asset, start, end)
     
     df['MA200'] = df['Adj Close'].rolling(window=200).mean()
     df['price change'] = df['Adj Close'].pct_change()
@@ -56,22 +56,24 @@ st.title("Estrategia RSI - Backtest de ordenes de compra.")
 st.text("Usando el Indice de fuerza relativo (RSI en inglés)  podemos buscar señales de ") 
 st.text("compra cuando el activo está sobrevendido")
 st.text("En el siguiente programa, se grafican todas las señales de compra que de ")
-st.text("hubiesen generado en los últimos 10 años.")
+st.text("hubiesen generado en el período especificado.")
 
 st.text("La lista de activos (SP500) la obtenemos de Wikipedia (https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)")
 
+start = st.date_input('Start', value=pd.to_datetime('2011-01-01'))
+end = st.date_input('End', value=pd.to_datetime('today'))
 
 ticker = st.selectbox('Seleccione el activo a procesar: ', tickers)
 print(ticker)
 if len(ticker) > 0:
     
-    frame = RSIcalc(ticker)
+    frame = RSIcalc(ticker, start, end)
     buy, sell = getSignals(frame)
 
-    dfBuy = frame.loc['2011-01-01':'2021-08-24', ['Buy']]
+    dfBuy = frame.loc[:, ['Buy']]
     toBuy = dfBuy[dfBuy['Buy']=='Yes']
 
-    
+       
     if not toBuy.empty:
         print('Asset to buy: ')
           
@@ -116,3 +118,6 @@ if len(ticker) > 0:
         
         st.pyplot(plt)
         plt.close()
+
+        st.text("Señales de compra obtenidas: ")
+        toBuy
