@@ -60,6 +60,8 @@ st.text("compra sugeridas para el período de tiempo seleccionado.")
 
 st.text("La lista de activos (SP500) la obtenemos de Wikipedia (https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)")
 
+st.write("Blog y otras apps: [link](http://fercanepari.com.ar/)")
+
 start = st.date_input('Start', value=pd.to_datetime('2011-01-01'))
 end = st.date_input('End', value=pd.to_datetime('today'))
 
@@ -129,3 +131,6 @@ if len(ticker) > 0 and diffDays.days > 300:
         st.text("No se encontraron señales de compra en el período.")
 else:
     st.text("El rango de fechas debe ser superior a 300 dias.")
+    
+    
+    
