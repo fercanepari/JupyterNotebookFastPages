@@ -82,6 +82,8 @@ st.text("the buy signals obtained with RSI strategy.")
 
 st.text("The list of all tickers is obtained from wikipedia (https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)")
 
+st.write("Python blog and other apps: [link](http://fercanepari.com.ar/)")
+
 st.text("To start the process press the button...")
 
 result = st.button("Start Process")

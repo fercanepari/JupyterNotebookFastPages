@@ -43,6 +43,8 @@ def get_bollinger_bands(rm, rstd):
 
 st.title("Finance dashboard")
 
+st.write("Python blog and other apps: [link](http://fercanepari.com.ar/)")
+
 dropdownType = st.multiselect('Pick your market:', ['Crypto', 'SP500'])
 
 if len(dropdownType) > 0:
