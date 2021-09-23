@@ -1,0 +1,186 @@
+Jupyter notebook Jeff Heaton
+
+C:\Users\CanepariF>cd t81_558_deep_learning-master
+
+conda activate torch  (hay otro que es tensorflow tmb)
+
+jupyter notebook
+
+---------------------------------------------------------------------------------------
+
+
+
+
+Instalar en multiples versiones de python usando pip
+https://stackoverflow.com/questions/2812520/dealing-with-multiple-python-versions-and-pip
+
+version 3.7 (spyder):
+Posicionarme en:
+C:\Program Files\Spyder\Python>
+
+ejecutar (ejemplo)
+python -m pip install virtualenv
+
+desde otra carpeta:
+D:\>"C:\Program Files\Spyder\Python\python" -m pip list
+
+--------------------------------------------
+VirtualENV
+
+1 - Crear environment
+"C:\Program Files\Spyder\Python\scripts\virtualenv" project_image
+"C:\ProgramData\Miniconda3\Scripts\virtualenv" flaskSaveNotes
+2 - activar env
+C:\Program Files\Spyder\Python\environments\project_image_processing\Scripts>activate.bat
+
+--------------------------------------------
+VirtualENV - En PythonAnywhere
+
+1 - git clone https://github.com/fercanepari/flaskSaveNotes.git
+2 - ls (ver lo clonado)
+3 - mkvirtualenv env --python='/usr/bin/python3.8' -> Crear entorno virtualenv
+4 - cd flaskSaveNotes/
+
+----------------------------------------------
+FLASK
+set FLASK_APP=notes
+
+flask run
+
+curl http://127.0.0.1:5000/notes/nota1
+curl http://127.0.0.1:5000/notes/all
+curl http://127.0.0.1:5000/notes/nota4 -d "title=Mi nieva nota de mañana" -d "uploadDate=20210923" -X PUT
+curl http://127.0.0.1:5000/notes/nota4 -X DELETE
+curl http://127.0.0.1:5000/notes -d "title=Mi nieva nota de maniana" -d "uploadDate=20210923" -X POST
+curl http://127.0.0.1:5000/notes
+
+curl https://fercanepari.pythonanywhere.com//notes -d "title=Mi nieva nota de maniana" -d "uploadDate=20210923" -X POST
+
+
+
+----------------------------------------------
+
+
+
+resolver error de kernel spyder
+
+pip install spyder-kernels==1.10.1
+pip install spyder-kernels==2.0.2
+
+https://www.youtube.com/watch?v=5Mku-CWTYtc&ab_channel=OSTechHelp
+
+
+-----------------------------------
+error en el Kernel de la notebook
+
+ejemplo:
+(FastPages_Blog) D:\Environments\FastPages_Blog>Scripts\pywin32_postinstall.py -install
+
+
+------------------------------------
+Streamlit:
+
+pip freeze > requirements.txt
+
+------------------------------------
+
+
+https://debuggercafe.com/faster-rcnn-object-detection-with-pytorch/
+
+
+ 
+ Product Links:
+Jetson Nano: https://amzn.to/3eY3AWN 
+Cheap Drone for OpenCV: https://amzn.to/2TZpsJy
+DC Motors + Wheels + Chassis: https://amzn.to/2SCZon3
+DC Motors + Wheels: https://amzn.to/2QeEusw
+Arduino UNO: https://amzn.to/2QdKthB
+Motor Driver: https://amzn.to/35grl6x
+Battery: https://amzn.to/2Fadc0c
+Recommend Webcam for Computer Vision: https://amzn.to/2MNtVKZ
+Budget Webcam: https://amzn.to/2ZP47Ug
+Raspberry Pi 4 Best Starter Kit:  https://amzn.to/2YVCEkL
+Raspberry Pi Recommended Battery: https://amzn.to/2C0I9pl
+
+
+--------------------------------------------------------------
+⭐Please Subscribe !⭐
+
+▶️ Get 2 Free Stocks on WeBull (valued up to $1850) when you deposit $100 or more :
+https://act.webull.com/kol-us/share.h...
+
+▶️ Earn $10 in Bitcoin by signing up with BlockFi and depositing $100 or more:
+https://blockfi.com/?ref=e5b523e0
+
+▶️ Earn $10 USD in bitcoin when you create an account with Gemini and trade (buy or sell) $100 USD in 30 days: https://gemini.com/share/lvwlkel3n
+
+⭐Get the code and data sets or just support the channel by becoming a supporter on Patreon:
+      https://www.patreon.com/computerscience
+
+⭐Website:
+      http://everythingcomputerscience.com/
+
+⭐Helpful Programming Books
+ ► Python (Hands-Machine-Learning-Scikit-Learn-TensorFlow):
+      https://amzn.to/2AD1axD
+
+► Learning Python:
+     https://amzn.to/3dQGrEB
+
+►Head First Python:
+    https://amzn.to/3fUxDiO
+
+pip install scikit-learn
+
+http://api.bitcoincharts.com/v1/csv/
+
+---------------------------------------------------------------------
+
+3 Data Science Learning Platforms I would recommend
+
+1. Data Quest - https://bit.ly/3yClqbZ (my favourite)
+2 Data Camp - https://bit.ly/39erDk8
+3 365 Data Science - https://bit.ly/3hbUHdd
+
+
+---------------------------------------------------------------------
+
+Run version 1 TensorFlow
+
+Opcion 1:
+
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior() 
+
+Opcion 2:
+
+
+
+---------------------------------------------------------------------
+
+Python para finanzas
+https://classroom.udacity.com/courses/ud501/lessons/3975568860/concepts/41007385960923
+
+Curso de Google
+https://developers.google.com/machine-learning/crash-course/
+
+EarthDC
+https://www.earthdatascience.org/
+
+
+---------------------------------------------------------------------
+
+Yahoo finanzas
+
+https://es-us.finanzas.yahoo.com/
+
+
+Youtube channel
+
+- Goal
+- type: Tutorial, informational, live coding, software entertainment
+
+
+ 
+
+
