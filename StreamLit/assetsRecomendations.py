@@ -20,8 +20,9 @@ tickers = tickers.Symbol.to_list()
 tickers = [i.replace('.','-') for i in tickers]
 #The following one has no enough data
 tickers.remove('OGN')
+tickers.remove('CEG')
 
-#For quick test
+#For quickCEGst
 #tickers = [
 # 'VTR',
 # 'EXPE'
