@@ -21,6 +21,7 @@ tickers = [i.replace('.','-') for i in tickers]
 #The following one has no enough data
 tickers.remove('OGN')
 tickers.remove('CEG')
+tickers.remove('DD')
 
 #For quickCEGst
 #tickers = [
